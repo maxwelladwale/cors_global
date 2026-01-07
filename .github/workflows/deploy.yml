@@ -19,6 +19,7 @@ jobs:
           echo "📦 Repository: ${{ github.repository }}"
           echo "🌿 Branch: ${{ github.ref }}"
           echo "📝 Commit: ${{ github.sha }}"
+          echo "👤 Triggered by: ${{ github.actor }}"
           echo "🖥️  Server: ${{ secrets.FTP_SERVER }}"
           echo "📁 Target Directory: ${{ secrets.DEV_SERVER }}"
 
@@ -33,5 +34,15 @@ jobs:
       - name: ✅ Deployment Complete
         run: |
           echo "✅ Deployment completed successfully!"
-          echo "📁 Files deployed to: ${{ secrets.FTP_SERVER_DIR }}"
+          echo "📁 Files deployed to: ${{ secrets.DEV_SERVER }}"
           echo "🎯 Server: ${{ secrets.FTP_SERVER }}"
+          echo "⏰ Completed at: $(date)"
+
+      - name: 🔔 Final Status
+        if: always()
+        run: |
+          if [ ${{ job.status }} == 'success' ]; then
+            echo "✨ Deployment succeeded!"
+          else
+            echo "❌ Deployment failed!"
+          fi
