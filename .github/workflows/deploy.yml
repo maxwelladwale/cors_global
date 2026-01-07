@@ -2,7 +2,7 @@ name: 🚀 Deploy Website
 
 on:
   repository_dispatch:
-    types: [deploy-production]
+    types: [deploy-staging]
 
 jobs:
   deploy:
