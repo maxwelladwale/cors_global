@@ -20,7 +20,7 @@ jobs:
           echo "🌿 Branch: ${{ github.ref }}"
           echo "📝 Commit: ${{ github.sha }}"
           echo "🖥️  Server: ${{ secrets.FTP_SERVER }}"
-          echo "📁 Target Directory: ${{ secrets.FTP_SERVER_DIR }}"
+          echo "📁 Target Directory: ${{ secrets.DEV_SERVER }}"
 
       - name: 📦 Deploy to Server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -28,7 +28,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: ${{ secrets.DEV_SERVER }}
 
       - name: ✅ Deployment Complete
         run: |
